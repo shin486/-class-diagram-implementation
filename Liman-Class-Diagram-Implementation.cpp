@@ -33,15 +33,23 @@ public:
             cout << "Shopping cart is empty.\n";
             return;
         }
+    
+        float total = calculateTotal(); 
+    
         cout << "\nShopping Cart:\n";
+        cout << "---------------------------------------------\n";
+        cout << "Total: " << fixed << setprecision(2) << total << endl; 
         cout << "---------------------------------------------\n";
         cout << left << setw(10) << "ID" << setw(15) << "Name" << setw(10) << "Price" << "Quantity\n";
         cout << "---------------------------------------------\n";
+        
         for (auto &item : cart) {
             cout << left << setw(10) << item.first.id << setw(15) << item.first.name
                  << setw(10) << item.first.price << item.second << endl;
         }
     }
+    
+    
 
     float calculateTotal() {
         float total = 0;
@@ -89,7 +97,7 @@ void viewProducts() {
 
 void getValidInt(int &value) {
     while (!(cin >> value)) {
-        cout << "Enter a valid number: ";
+        cout << "Enter (1-4): ";
         cin.clear();
         cin.ignore(10000, '\n');
     }
